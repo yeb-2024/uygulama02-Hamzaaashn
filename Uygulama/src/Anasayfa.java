@@ -97,6 +97,14 @@ public class Anasayfa implements ActionListener {
                         JOptionPane.ERROR_MESSAGE
                 );
             }
+            else if (girilenŞifreStr.length() < 5)
+            {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Minimum 5 Karakter Olmalı !",
+                        "Hata",
+                        JOptionPane.ERROR_MESSAGE);
+            }
             else {
                 girilenŞifreİnt = Integer.parseInt(girilenŞifreStr);
 
@@ -113,14 +121,7 @@ public class Anasayfa implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Hatalı Giriş! Tekrar Deneyiniz.","BAŞARISIZ",JOptionPane.WARNING_MESSAGE);
                 }
             }
-            if (girilenŞifreStr.length() < 5)
-            {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Minimum 5 Karakter Olmalı !",
-                        "Hata",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+
         }
     }
 }
