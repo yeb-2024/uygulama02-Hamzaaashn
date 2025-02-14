@@ -8,7 +8,8 @@ public class Anasayfa implements ActionListener {
     int şifre = 12345;
 
     String girilenİsim;
-    int girilenŞifre;
+    int girilenŞifreİnt;
+    String girilenŞifreStr;
 
     JFrame frame;
     JTextField textFieldİsim;
@@ -84,20 +85,32 @@ public class Anasayfa implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button)
         {
-            girilenİsim = textFieldİsim.getText();
-            girilenŞifre = Integer.parseInt(textFieldŞifre.getText());
+            girilenİsim = textFieldİsim.getText().trim();
+            girilenŞifreStr = textFieldŞifre.getText().trim();
 
-            if (girilenİsim.equals(isim) && girilenŞifre == şifre)
+            if (girilenİsim.isEmpty() || girilenŞifreStr.isEmpty())
             {
-                frame.dispose();
-                String mesaj = "Hoş Geldiniz, " + girilenİsim;
-                JOptionPane.showMessageDialog(null, mesaj,"BAŞARILI",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Lütfen Tüm Alanları Doldurun !",
+                        "Hata",
+                        JOptionPane.ERROR_MESSAGE
+                );
             }
-            else
-            {
-                textFieldŞifre.setText("");
-                textFieldİsim.setText("");
-                JOptionPane.showMessageDialog(null,"Hatalı Giriş! Tekrar Deneyiniz.","BAŞARISIZ",JOptionPane.WARNING_MESSAGE);
+            else {
+                girilenŞifreİnt = Integer.parseInt(girilenŞifreStr);
+                if (girilenİsim.equals(isim) && girilenŞifreİnt == şifre)
+                {
+                    frame.dispose();
+                    String mesaj = "Hoş Geldiniz, " + girilenİsim;
+                    JOptionPane.showMessageDialog(null, mesaj,"BAŞARILI",JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    textFieldŞifre.setText("");
+                    textFieldİsim.setText("");
+                    JOptionPane.showMessageDialog(null,"Hatalı Giriş! Tekrar Deneyiniz.","BAŞARISIZ",JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
     }
