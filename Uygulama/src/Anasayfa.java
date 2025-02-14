@@ -99,6 +99,7 @@ public class Anasayfa implements ActionListener {
             }
             else {
                 girilenŞifreİnt = Integer.parseInt(girilenŞifreStr);
+
                 if (girilenİsim.equals(isim) && girilenŞifreİnt == şifre)
                 {
                     frame.dispose();
@@ -111,6 +112,14 @@ public class Anasayfa implements ActionListener {
                     textFieldİsim.setText("");
                     JOptionPane.showMessageDialog(null,"Hatalı Giriş! Tekrar Deneyiniz.","BAŞARISIZ",JOptionPane.WARNING_MESSAGE);
                 }
+            }
+            if (girilenŞifreStr.length() < 5)
+            {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Minimum 5 Karakter Olmalı !",
+                        "Hata",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
